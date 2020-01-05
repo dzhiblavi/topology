@@ -1,0 +1,112 @@
+\section{Аксиомы отделимости}
+
+\begin{definition}
+	Топологическое пространство называется \textit{хаусдорфовым}, 
+	если 
+\[
+		\forall x \neq y~ \exists~ U(x), U(y)\colon~ U(x) \cap U(y) = \varnothing
+\]
+	Хаусдорфовость --- вторая аксиома отделимости (Т2).
+\end{definition}
+
+\begin{remark}
+	Все метрические пространства являются хаусдорфовыми.
+\end{remark}
+
+\begin{definition}
+	Топологическое пространство удовлетворяет первой аксиоме
+	отделимости (Т1), если 
+\[
+	\forall x \neq y~\exists~ U(x)\colon~ U(x) \not\ni y
+\]
+\end{definition}
+
+\begin{theorem}
+	Т.п. $X$ удовлетворяет Т1 тогда и только тогда, когда в нем
+	любое одноточечное множество замкнуто.
+\end{theorem}
+
+\begin{definition}
+	Множества $A$, $B$ называются отделимыми, если 
+\[
+	\exists U(A), U(B)\colon~ U(A) \cap U(B) = \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+	Топологическое пространство называется \textit{регулярным} (Т3),
+	если в нем выполняются свойства:
+	\begin{itemize}
+		\item Все одноточечные множества замкнуты (Т1).
+		\item $\forall x~ \forall cl_X(A)\colon~ x \notin A~~ x$ отделима от $A$. 
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Регулярность эквивалентна набору свойств
+	\begin{itemize}
+		\item Все одноточечные множества замкнуты (Т1).
+		\item $\forall x~ \forall U(x)~ \exists V(x)\colon~ \Cl(V) \subset U$
+			($U$, $V$ открыты).
+	\end{itemize}
+\end{remark}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] Пусть $x \in A$ открыто, поэтому $\overline{A}$ замнкнуто, причем
+			$x \notin \overline{A}$. Тогда $x$ отделима от $\overline{A}$:
+\[
+	\exists U(\overline{A}), U(x)\colon~ U(\overline{A}) \cap U(x) = \varnothing
+\]
+	Тогда можно взять $V = U(x)$: $\Cl(V) \cap \overline{A} = \varnothing$: если 
+	бы $\Cl(V) \cap \overline{A} \ni p$, то 
+\[
+	\forall U(p)~ U(p) \cap U(x) \neq \varnothing
+\]
+	Но $p$ --- внутренняя точка $U(\overline{A})$, поэтому входит в нее с
+	некоторой $U(p)$, которая пересекается с $U(x)$, чего быть не может.
+		\item[$\Lla$] Снова перейдем к дополнению: множество $\overline{A}$
+			открыто, причем $x \in \overline{A}$. Тогда
+\[
+	\exists V(x)\colon~ \Cl(V) \subset \overline{A}
+\]
+	Тогда можно отделить $A$ и $x$ множествами $X \setminus \Cl(V(x))$ 
+	и $V(x)$ соответственно.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	Топологическое пространство называется \textit{нормальным} (Т4), если
+	в нем любые два непересекающихся замкнутых множества отделимы.
+\end{definition}
+
+\begin{theorem}(Нормальность метризуемых пространств)
+	Все метризуемые топологические пространства нормальны.
+\end{theorem}
+\begin{proof}
+	Пусть $A$, $B$ --- непересекающиеся замкнутые множества. Тогда
+	\begin{align*}
+		\forall x \in A~ \exists r_x > 0\colon~ B(x, r_x) \cap B = \varnothing \\
+		\forall y \in B~ \exists r_y > 0\colon~ B(y, r_y) \cap A = \varnothing
+	\end{align*}
+	Здесь мы воспользовались хаусдорфовостью метрических пространств.
+	Положим
+	\begin{align*}
+		U = \bigcup_{x \in A}{B\left(x, \frac{r_x}{2}\right)} \\
+		V = \bigcup_{y \in B}{B\left(y, \frac{r_y}{2}\right)}
+	\end{align*}
+	Эти множества открыты. Если мы докажем, что они не пересекаются,
+	то множества $A$ и $B$ окажутся отделимыми.
+	Пусть $U \cap V \neq \varnothing$, тогда (пусть $r_x \geqslant r_y$):
+\begin{align*}
+	&\exists r_x, r_y\colon~ B\left(x, \frac{r_x}{2}\right)
+		\cap B\left(y, \frac{r_y}{2}\right) \neq 0 \Lra \\
+	&\exists z\colon~ |xz| < \frac{r_x}{2},~ |yz| < \frac{r_y}{2} \Lra
+	|xy| < \frac{r_x + r_y}{2} \leqslant \max(r_x, r_y) = r_x
+	\Lra \\ &B(x, r_x) \ni y
+\end{align*}
+\end{proof}
+
+\begin{remark}
+	Т1, Т2, Т3 наследуются подпространством. Т4, вообще говоря, нет.
+\end{remark}
