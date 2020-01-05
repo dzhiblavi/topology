@@ -1,0 +1,66 @@
+\section{Индуцированная топология}
+
+\begin{definition}
+	Пусть $X$ --- топологическое пространство, $Y \subset X$. Тогда
+	на $Y$ можно завести топологию, которую называют \textit{индуцированной}:
+	множество $A \subset Y$ открыто тогда и только тогда, когда
+	$\exists B \in \O(X)\colon~ A = B \cap Y$. В таком случае
+	топологическое пространство $\langle Y, \O(Y) \rangle$ 
+	называют \textit{подпространством}.
+\end{definition}
+
+\begin{theorem}(База подпространства в точке)
+
+	Пусть $X$ --- топологическое пространство, $Y \subset X$ --- его подпространство,
+	$y \in Y$, $\Sigma_y$ --- база $X$ в точке $y$. Тогда
+\[
+	\{\, U \cap Y \,\}_{U \in \Sigma_y}
+\]
+	является базой индуцированной топологии в точке $y$.
+\end{theorem}
+\begin{proof}
+	Пусть $y \in A$ открыто в $Y$. Тогда по определению индуцированной топологии
+	$\exists U \in \O(X)\colon~ A = U \cap Y \ni y$. Тогда по определению
+	базы в точке $\exists V \in \Sigma_y\colon~ y \in V \subseteq U$.
+	Тогда $y \in V \cap Y \subseteq U \cap Y$, что и требовалось.
+\end{proof}
+
+\begin{corollary}
+	Пусть $\Sigma$ --- база $\O(X)$, $Y$ --- подпространство $X$.
+	Тогда 
+\[ 
+	\{\, V \cap Y \mid V \in \Sigma \,\} \text{ --- база } \O(Y)
+\]
+\end{corollary}
+
+\begin{theorem}
+	Пусть $X$ --- т.п., $Y \subset X$ --- его подпространство, $A \subseteq Y$.
+	Тогда
+	\begin{itemize}
+		\item $open_X(A) \Lra open_Y(A)$.
+		\item $cl_Y(A) \Llra \exists cl_X(B)\colon~ B \cap Y = A$.
+		\item $cl_X(A) \Lra cl_Y(A)$.
+		\item $open_X(Y) \Llra (open_Y(A) \Llra open_X(A))$.
+		\item $cl_X(Y) \Llra (cl_Y(A) \Llra cl_X(A))$.
+	\end{itemize}
+\end{theorem}
+
+\begin{theorem}(О транзитивности индуцирования)
+
+	Пусть $X$ --- т.п., $X \supset Y \supset Z$, тогда
+	топологии $Y \to Z$, $X \to Z$ совпадают.
+\end{theorem}
+\begin{proof}
+\begin{align*}
+	open_{X \to Z}(A) \Llra \exists open_X(U)\colon~ A = U \cap Z \Llra
+	A = \underbrace{(U \cap Y)}_{open_Y} \cap Z \Llra open_{Y \to Z}(A).
+\end{align*}	
+\end{proof}
+
+\begin{remark}
+	\enewline
+	\begin{itemize}
+		\item $\Cl_X(A) \cap Y = \Cl_Y(A)$.
+		\item $\Int_X(A) \cap Y \neq \Int_Y(A)$ (вообще говоря).
+	\end{itemize}
+\end{remark}

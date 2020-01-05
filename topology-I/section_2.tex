@@ -1,0 +1,78 @@
+\section{База топологии}
+
+\begin{definition}
+	\textit{Базой топологии} $\O$ называют $\Sigma \subseteq \O$ такое, что
+\[
+	\forall U \in \O~ \exists \l_\a \in \Sigma\colon~ U = \bigcup{\l_\a}
+\]
+\end{definition}
+
+\begin{theorem}
+	$\Sigma$ --- база топологиии $\O$ тогда и только тогда, когда
+\[
+	\forall x \in X~ \forall U(x)~ \exists V \in \Sigma \colon x \in V \subseteq U
+\]
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] $\Sigma$ --- база топологии, поэтому
+\[
+	\exists \l_\a \in \Sigma\colon~ U(x) = \bigcup{\l_\a}
+\]
+		Поэтому $\exists \a\colon x \in \l_\a$.
+		\item[$\Lla$] Пусть $A$ открыто, тогда
+\[
+	A = \bigcup_{x \in A}{V(x)}
+\]
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	$\Sigma_x$ называется \textit{базой топологии в точке $x$}, если
+	\begin{itemize}
+		\item $\forall V \in \Sigma_x~ x \in V$.
+		\item $\forall U \in \O\colon~ x \in U~ \exists V \in \Sigma_x\colon x \in V 
+			\subseteq U$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	$\Sigma$ --- база топологии тогда и только тогда, когда
+\[
+	\forall x \in X~ \Sigma_x = \{\, U \in \Sigma \mid x \in U \,\}
+	\text{ --- база топологии в } x
+\]
+\end{remark}
+
+\begin{remark}
+	$\forall x~ \Sigma_x$ --- базы в точках, тогда
+	$\bigcup{\Sigma_x}$ --- база топологии.
+\end{remark}
+
+\begin{theorem}
+	$\Sigma$ --- база некоторой топологии тогда и только тогда, когда
+	\begin{itemize}
+		\item $X = \bigcup{\Sigma}$.
+		\item $\forall U, V \in \Sigma~ U \cap V$ представляется в виде
+			объединения элементов $\Sigma$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	\begin{itemize}
+		\item[$\Lra$] $X$ открыто, поэтому обязательно выполнено первое
+			условие. Второе условие выполнено потому,
+			что $U \cap V$ открыто, то есть по определению должно представляться
+			в виде объединения элементов $\Sigma$.
+		\item[$\Lla$] Назначим $\O$ как всевозможные объединения множеств из $\Sigma$.
+			Проверим, что $\O$ --- топология.
+			\begin{itemize}
+				\item $\varnothing, X \in \O$ --- очевидно.
+				\item $\bigcup{U} \in X$ по построению.
+				\item $U \cap V = \left(\bigcup{U_i}\right) \cap 
+					\left(\bigcup{V_i}\right) = \bigcup{U_i \cap V_i}$.
+					$U_i \cap V_i$ открыто по посылке, поэтому $U \cap V$
+					открыто.
+			\end{itemize}
+	\end{itemize}
+\end{proof}

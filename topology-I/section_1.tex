@@ -199,14 +199,6 @@
 \end{definition}
 
 \begin{definition}
-    Точка $x$ называется \textit{предельной} точкой множества $A$, если любая
-    окрестность точки $x$ имеет непустое пересечение с $A$:
-\[
-    \forall U(x)~~ A \cap U(x) \neq \varnothing
-\]
-\end{definition}
-
-\begin{definition}
     Точка $x$ называется \textit{внешней} точкой $A$, если
 \[
     \exists U(x)~~ A \cap U(x) = \varnothing
@@ -214,7 +206,8 @@
 \end{definition}
 
 \begin{definition}
-    Точка $x$ называется \textit{точкой прикосновения} множества $A$, если
+	Точка $x$ называется \textit{точкой прикосновения (предельной точкой)}
+	множества $A$, если
 \end{definition}
 \[
     \forall U(x)~~ A \cap U(x) \neq \varnothing
@@ -414,3 +407,88 @@
     Топологическое пространство $X$ называют \textit{сепарабельным}, если
     в нем существует не более чем счетное всюду плотное множество.
 \end{definition}
+
+\begin{remark}
+	Всюду плотность множества $A$ эквивалентна
+	\begin{itemize}
+		\item $\Int(X \setminus A) = \varnothing$.
+		\item $\forall open_X(D)~ D \cap A \neq \varnothing$.
+	\end{itemize}
+\end{remark}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item $\Int(X \setminus A) = X \setminus \Cl(A) = \varnothing$.
+		\item Если это условие не выполнилось для какого-то непустого $D$,
+			то любая его точка является внешней для множества $A$, а значит,
+			не входит в замыкание. Если же это условие выполнилось для всех $D$, 
+			то любая окрестность любой точки пересекается с $A$ (надо
+			взять $D = $ этой окрестности), значит, любая точка является 
+			точкой прикосновения $A$, о есть $A$ всюду плотно.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	Множество $A \subseteq X$ называют \textit{нигде не плотным}, если
+	внутренность его замыкание пуста: $\Int(\Cl(A)) = \varnothing$.
+\end{definition}
+
+\begin{remark}
+	Нигде не плотность множества $A$ эквивалентна тому, что
+	в любом непустом открытом множестве найдется открытое подмножество,
+	не пересекающееся с $A$.
+\end{remark}
+
+\begin{theorem}
+	В сепарабельном пространстве не существует более чем счетного
+	дизъюнктного набора непустых открытых множеств.
+\end{theorem}
+\begin{proof}
+	Пусть $U_i$ --- более чем счетный дизъюнктный набор непустых открытых
+	множеств. Выберем тогда из каждого $U_i$ точку $p_i$, которая
+	лежит в пересечение $U_i \cap S$, где $S$ --- какое-нибудь
+	счетное всюду плотное множество. Получим, что $\{\, p_i \,\} \subseteq S$,
+	то есть $S$ более, чем счетно.
+\end{proof}
+
+\section{Сравнение топологий}
+
+\begin{definition}
+	Пусть $\O_1$, $\O_2$ --- топологии на $X$. Говорят, что топология 
+	$\O_1$ \textit{слабее} топологии $\O_2$, если $\O_1 \subset \O_2$.
+\end{definition}
+
+\begin{theorem}(Сравнение метрических топологий)
+
+	Пусть $d_1$, $d_2$ --- метрики на $X$, $Top(d)$ --- топология,
+	порожденная метрикой $d$. Тогда $Top(d_1) \subseteq Top(d_2)$
+	тогда и только тогда, когда в любом шаре по $d_1$ содержится 
+	шар по $d_2$ c таким же центром.
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] Раз $Top(d_1) \subseteq Top(d_2)$, то шар $B_1(x, r)$ по метрике 
+			$d_1$ открыт в $Top(d_2)$, значит любая его точка, включая $x$, 
+			входит в $B_1(x, r)$ с некоторой окрестностью $B_2(x, r')$ во второй 
+			топологии.
+		\item[$\Lla$] Проверим, что открытое в первой топологии множество $U$ открыто
+			во второй топологии. Для этого проверим, что все его точки 
+			--- внутренние по второй метрике. $U$ открыто в $Top(d_1) \Lra
+			\forall x \in U~ \exists~ B_1(x, r) \subseteq U 
+			\Lra \exists~ B_2(x, r) \subseteq U$. 
+	\end{itemize}
+\end{proof}
+
+\begin{corollary}
+	$d_1 \leqslant d_2 \Lra Top(d_1) \subseteq Top(d_2)$.
+\end{corollary}
+
+\begin{corollary}
+	$\exists c > 0\colon~ d_1 \leqslant c d_2 \Lra Top(d_1) \subseteq Top(d_2)$.
+\end{corollary}
+
+\begin{corollary}
+	$d_1$, $d_2$ липшицево эквивалентны $\Lra Top(d_1) = Top(d_2)$.
+\end{corollary}
+
