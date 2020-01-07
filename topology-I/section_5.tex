@@ -1,0 +1,167 @@
+\section{Непрерывность}
+
+\begin{definition}
+	Отображение топологических пространств $f \colon X \to Y$ называется
+	\textit{непрерывным}, если прообраз любого открытого множества открыт.
+\end{definition}
+
+\begin{remark}
+	Открытость в определении можно заменить на замкнутость.
+\end{remark}
+
+\begin{remark}
+	$f \colon X \to Y$ непрерыно $\Llra \forall B~ f^{-1}(\Int(B)) \subseteq 
+	\Int(f^{-1}(B))$.
+\end{remark}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] $f^{-1}(\Int(B)) = \Int(f^{-1}(\Int(B))) \subseteq \Int(f^{-1}(B))$
+		\item[$\Lla$] Пусть $U$ открыто. Тогда 
+			$f^{-1}(U) = f^{-1}(\Int(U)) \subseteq \Int(f^{-1}(U)) \subseteq f^{-1}(U)$.
+			Поэтому $f^{-1}(U) = \Int(f^{-1}(U))$, что и означает, что $f^{-1}(U)$
+			открыто.
+	\end{itemize}
+\end{proof}
+
+%\begin{remark}
+%	\enewline
+%	\begin{itemize}
+%		\item $f$ непрерывно $\Llra \forall A~ f(\Cl(A)) \subset \Cl(f(A))$.
+%		\item $f$ непрерывно $\Llra \forall A~ f(\Int(A)) \supset \Int(f(A))$.
+%	\end{itemize}
+%\end{remark}
+
+\begin{definition}
+	Отображение называется \textit{открытым}, если образ открытого множества
+	всегда открыт.
+\end{definition}
+
+\begin{remark}
+	$f \colon X \to Y$ открыто $\Llra \forall A~ f(\Int(A)) \subseteq \Int(f(A))$.
+\end{remark}
+\begin{proof}
+	Аналогично подобному замечанию о непрерывных отображениях.
+\end{proof}
+
+\begin{definition}
+	Пусть $X \subset Y$, $X$ --- подпространство $Y$,
+	тогда отображение 
+\[
+	in_{X \to Y} \colon X \to Y, ~in(x) = x
+\]
+	называется \textit{вложением} $X$ в $Y$.
+\end{definition}
+
+\begin{remark}
+	Вложение непрерывно.
+\end{remark}
+
+\begin{theorem}(Композиция непрерывных отображений)
+
+	Пусть $f \colon X \to Y$, $g \colon Y \to Z$ непрерывны. Тогда
+	$g \circ f \colon X \to Z$ непрерывно.
+\end{theorem}
+\begin{proof}
+	Пусть $U$ открыто в $Z$. Тогда
+\[
+	(g \circ f)^{-1}(U) = f^{-1}(g^{-1}(U))
+\]
+	Открыто.
+\end{proof}
+
+\begin{remark}
+	Усиление и ослабление топологии оставляют непрерывные отображения непрерывными.
+\end{remark}
+
+\begin{theorem}(Непрерывность сужения)
+	
+	Если $f \colon X \to Y$ непрерывно, $Z \subseteq X$ --- подпространство $X$,
+	тогда $f\big|_Z$ непрерывно.
+\end{theorem}
+\begin{proof}
+	$f\big|_Z = f \circ in_{Z \to X}$ непрерывно как композиция непрерывных отображений.
+\end{proof}
+
+\begin{theorem}
+
+	$f \colon X \to Y$ непрерывно $\Llra f(X) \subseteq Z \subseteq Y$,
+	тогда $\hat{f} \colon X \to Z,~ \hat{f}(x) = f(x)$ непрерывно.
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lla$] $f$ непрерывно как композиция: $f =
+			in_{Z \to Y} \circ \hat{f}$.
+		\item[$\Lra$] Пусть $V$ открыто в $Z$. Тогда $V = U \cap Z$, где $U$
+			открыто в $Y$. Поэтому
+\[
+	\hat{f}^{-1}(V) = f^{-1}(V) = f^{-1}(U \cap Z) = f^{-1}(U) \cap f^{-1}(Z)
+	= f^{-1}(U) \text{ --- открыто в } X
+\]
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	$f \colon X \to Y$ непрерывно в $x \in X$, если
+\[
+	\forall U(f(x))~ \exists V(x)\colon~ f(V) \subset U
+\]
+\end{definition}
+
+\begin{theorem}
+	$f \colon X \to Y$ непрерывно $\Llra$ $\forall x \in X~ f$ непрерывно в $x$. 
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] Для любой точки и ее окрестности $U$ можно взять $V = f^{-1}(U)$.
+		\item[$\Lla$] Пусть $U$ открыто в $Y$, покажем, что $f^{-1}(U)$ открыто в $X$,
+			то есть любая точка $f^{-1}(U)$ внутренняя.
+\[
+	x \in f^{-1}(U) \Lra \exists V(x)\colon~ f(V) \subset U \Llra V \subset f^{-1}(U)
+	\Lra x \text{ --- внутренняя точка } f^{-1}(U)
+\]
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}(Непрерывность в точке в терминах баз)
+	
+	Пусть $f \colon X \to Y$, $\Sigma_x$ --- база топологии в $x$,
+	$\Lambda_{f(x)}$ --- база топологии	в $f(x)$. Тогда
+\[
+	f \text{ непрерывна в } x \Llra \forall U \in \Lambda_{f(x)}~
+	\exists V \in \Sigma_x \colon f(V) \subset U
+\]
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] Пусть $U \in \Lambda_{f(x)}$, тогда $f^{-1}(U)$
+			открыт, то есть в нем есть элемент базы $\Sigma_x$, что нам
+			и нужно.
+		\item[$\Lla$] Пусть $U$ открыто в $Y$, тогда в $U$ есть базовая окрестность 
+			$\Lambda_i \ni f(x)$. Для этого элемента по посылке существует базовая
+			окрестность $\Sigma_i \ni x \colon~ f(\Sigma_i) \subseteq \Lambda_i$.
+			Эта $\Sigma_i$ и подходит под определение непрерывности в точке.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	\textit{Липшицевым} называется отображение метрических пространств
+	$f \colon X \to Y$ такое, что $\exists C \colon~ \forall x_1, x_2 \in X~
+	\r_Y(f(x_1), f(x_2)) \leqslant C \cdot \r_X(x_1, x_2)$.
+\end{definition}
+
+\begin{theorem}
+	Все липшицевы отображения непрерывны.
+\end{theorem}
+\begin{proof}
+	Зафиксируем базы топологий, состоящие из всевозможных шаров. Тогда
+\[
+	\forall \e > 0~ \exists \delta = \frac{\e}{C}\colon~ f(B_\delta(x)) \subseteq
+	B_\e(f(x))
+\]
+	Что по теореме о непрерывности в терминах баз дает непрерывность в любой точке,
+	а значит, и непрерывность на $X$.
+\end{proof}
