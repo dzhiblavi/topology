@@ -165,3 +165,227 @@
 	Что по теореме о непрерывности в терминах баз дает непрерывность в любой точке,
 	а значит, и непрерывность на $X$.
 \end{proof}
+
+\begin{theorem}
+	Пусть $f\colon\langle X, \O \rangle \to \langle Y, \Sigma\rangle$, $x \in X$.
+	Топологическому пространству $\langle X, \O \rangle$ и точке $x$
+	сопоставим топологическое пространство $\langle X, \O^x \rangle$:
+\[
+	\O^x = \{\, \varnothing, A \mid \exists U(x) \subseteq A  \,\}
+\]
+	Аналогично поступим и для $Y$ и $f(x)$. Тогда $f$ можно понимать как отображение между
+	этими топологическими пространствами $\hat{f}$. В таком случае, верно утверждение:
+\[
+	f \text{ непрерывно в } x \Llra \hat{f} \text{ непрерывно}
+.\]
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] Пусть множество $B \subseteq Y$ открыто в $\Sigma^{f(x)}$. В таком
+			случае, $\exists V(f(x)) \subseteq B$ открытое в $\Sigma$. Прообраз
+			$V$ открыт по предположению, что $f$ непрерывно в точке, поэтому, раз
+\[
+	f^{-1}(V) \subseteq f^{-1}(B)
+\]
+			то множество $f^{-1}(B)$ открыто в $\O^x$, что и требовалось.
+		\item[$\Lla$] Пусть теперь множество $f(x) \in B \subseteq Y$ открыто в $\Sigma$. Тогда
+			оно автоматически открыто и в $\Sigma^{f(x)}$. Раз так, по посылке
+			прообраз $B$ открыт в $\O^x$, что по определению дает существование
+			требуемой для непрерывности в точки окрестности $x$.
+	\end{itemize}
+\end{proof}
+
+\begin{corollary}
+	Пусть $f$ непрерывно в $x$, $g$ непрерывно в $f(x)$. Тогда $g \circ f$ непрерывно в $x$.
+\end{corollary}
+
+\section{Гомеоморфизм}
+
+\begin{definition}
+	\textit{Гомеоморфизмом} топологических пространств $X$ и $Y$ называют
+	биективное в обе стороны непрерывное отображение этих пространств. Другими
+	словами, отображение сопоставляет открытым множествам открытые (биективно).
+	$X$ и $Y$ в таком случае называют \textit{гомеоморфными}.
+\end{definition}
+
+\begin{definition}
+	$f \colon X \to Y$ называется \textit{вложением} $X$ в $Y$, если оно
+	осуществляет гомеоморфизм между $X$ и $f(X)$.
+\end{definition}
+
+\begin{definition}
+	Покрытие $\Gamma$ пространства $X$ называется \textit{фундаментальным},
+	если выполнено:
+\[
+	\forall A \subseteq X~~ [\forall C \in \Gamma~ open_C(A \cap C) \Lra open_X(A)]
+\]
+\end{definition}
+
+\begin{remark}
+	В определении, как всегда, можно везде заменить открытость на замкнутость.
+\end{remark}
+
+\begin{theorem}
+	Пусть $\Gamma$ --- фундаментальное покрытие $X$, $f \colon X \to Y$, 
+	$\forall C \in \Gamma~ f\big|_C$ непрерывно, тогда $f$ непрерывно на $X$.
+\end{theorem}
+\begin{proof}
+	Пусть $U$ открыто в $Y$. Проверим, что $f^{-1}(U)$ открыто в $X$:
+\[
+	\forall C \in \Gamma~ f^{-1}(U) \cap C = \left(f\big|_C\right)^{-1}(U) 
+\]
+	Последнее множество открыто в $C$ потому, что $f\big|_C$ непрерывно.
+	Тогда по самому определению фундаментального покрытия имеем, что
+	$f^{-1}(U)$ открыто.
+\end{proof}
+
+\begin{theorem}
+	\enewline
+	\begin{itemize}
+		\item Все открытые покрытия фундаментальны.
+		\item Все конечные замкнутые покрытия фундаментальны.
+		\item Все локально конечные замкнутые покрытия фундаментальны.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item $A \cap C$ открыто в $C$ для всех $C \in \Gamma$, $C$ открыто в $X$,
+			поэтому $A \cap C$ открыто в $X$. Раз так, $A = \bigcup{A \cap C}$
+			открыто в $X$.
+		\item Совершенно аналогично первому пункту (за исключением того, что
+			пользуемся определением фундаментальности в терминах замкнутых множеств
+			и того, что объединение только конечного числа замкнутых множеств замкнуто).
+		\item За каждой точкой зафиксируем окрестность $U_x$, имеющую
+			пересечение с конечным множеством множеств из $\Gamma$. $U_x$ ---
+			фундаментальное покрытие $X$ (так как открытое). Пусть теперь
+			$\forall C \in \Gamma~ A \cap C$ открыто в $C$. Тогда
+			$\forall C \in \Gamma~ \forall x \in X~ A \cap C \cap U_x$ открыто в $C \cap U_x$
+			по определению индуцированной в $C \cap U_x$ топологии. Тогда
+			$(A \cap C) \cap (C \cap U_x)$ открыто в $C \cap U_x$, где
+			$C \cap U_x$ образует конечное замкнутое покрытие $U_x$ (по построению). Это
+			покрытие фундаментально по второму пункту, поэтому по определению его 
+			фундаментальности, $A \cap U_x$ открыто в $U_x$. Применяя снова
+			определение фундаментальности, только уже к покрытию $U_x$, получаем открытость
+			$A$.
+	\end{itemize}
+\end{proof}
+
+\section{Прямое произведение топологических пространств}
+
+\begin{definition}
+	Пусть $\langle X, \O \rangle$, $\langle Y, \Sigma \rangle$ --- топологические
+	пространства. Тогда их прямым произведением называется топологическое пространство
+	с носителем $X \times Y$, база топологии которого состоит из всевозможных множеств
+	вида
+\[
+	A \times B,~ A \in \O, B \in \Sigma
+\]
+\end{definition}
+
+\begin{lemma}
+	Только что определенная система множеств действительно является базой топологии.
+	Для этого достаточно проверить (теорема 1.5.2), что пересечение элементов базы
+	представляется в виде объединения элементов той же базы:
+\[
+	(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B')	
+\]
+	Здесь объединение состоит из одного элемента.
+\end{lemma}
+
+\begin{theorem}
+	Прямое произведение замкнутых $A$, $B$ замкнуто в прямом произведении топологий.
+	\textit{Замечание: прямое произведение открытых множеств открыто просто по определению}.
+\end{theorem}
+\begin{proof}
+	Покажем, что $(X \times Y) \setminus (A \times B)$ открыто:
+\[
+	(X \times Y) \setminus (A \times B) = (X \setminus A) \times Y \cap X \times (Y \setminus B)
+\]
+\end{proof}
+
+\begin{remark}
+	Пусть $A \subseteq X$, $B \subseteq Y$. Тогда
+	\begin{itemize}
+		\item $\Cl(A \times B) = \Cl(A) \times \Cl(B)$.
+		\item $\Int(A \times B) = \Int(A) \times \Int(B)$.
+	\end{itemize}
+\end{remark}
+\begin{proof}
+	Докажем второе утверждение:
+\[
+	\Int(A \times B) = \bigcup_{\substack{open_{X\times Y}(C) \\ C \subseteq A \times B}}{C}
+	= \bigcup_{\substack{open_{X \times Y}(A' \times B') \\ A'\times B' \subseteq A \times B}}
+	{A' \times B'} = \bigcup_{\substack{A' \subseteq A \\ open_X(A')}}{A'} 
+	\times \bigcup_{\substack{B' \subseteq B \\ open_Y(B')}}{B'} = \Int(A) \times \Int(B)
+\]
+	Первый переход можно сделать, потому что любое открытое множество $C$ представляется
+	в виде объединения множеств из базы.
+\end{proof}
+
+\begin{definition}
+	Отображение
+\[
+	pr_x \colon X \times Y \to X,~ (x, y) \mapsto x
+\]
+	называется \textit{проекцией} $X \times Y$ на $X$.
+\end{definition}
+
+\begin{theorem}
+	Проекция непрерывна.	
+\end{theorem}
+\begin{proof}
+	Пусть $U$ открыто в $X$. Тогда $pr_X^{-1}(U) = U \times Y$ --- открыто в $X \times Y$
+	по определению.
+\end{proof}
+
+\begin{theorem}
+	Пусть $X$, $Y$, $Z$ --- топологические пространства, $f \colon Z \to X \times Y$,
+	$f = (g, h)$, где $g \colon Z \to X$, $h \colon Z \to Y$. Тогда
+\[
+	f \text{ непрерывно } \Llra g, h \text{ непрерывны}
+\]
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[$\Lra$] $g = pr_X \circ f$, $h = pr_Y \circ f$.
+		\item[$\Lla$] Достаточно проверить открытость прообраза на базовых множествах:
+\[
+	f^{-1}(U \times V) = g^{-1}(U) \cap h^{-1}(V)
+\]
+	\end{itemize}
+\end{proof}
+
+\begin{corollary}
+	\textit{Координатный слой} гомеоморфен $X$:
+\[
+	X \times \{\,y_0\,\} \simeq X
+\]
+\end{corollary}
+\begin{proof}
+	Установим гомеоморфизм
+\[
+	f \colon X \to X \times \{\,y_0\,\},~ x \mapsto (x, y_0)
+\]
+	Тогда
+\[
+	f^{-1} = pr_X\big|_{X \times \{\,y_0\,\}}
+\]
+	И оба предъявленных отображения непрерывны.
+\end{proof}
+
+\begin{theorem}
+	Пусть $X$ --- т.п., $f, g\colon X \to \R$ непрерывны. Тогда
+	$f + g$, $fg$, $\frac{f}{g}$ (при $g \neq 0$) непрерывны.
+\end{theorem}
+\begin{proof}
+	Будем пользоваться тем, что арифметические операции непрерывны:
+\begin{displaymath}
+	\xymatrix{
+		X \ar[r]^{(f, g)} & \R^2 \ar[r]^{+} & \R
+	}
+\end{displaymath}
+	Здесь отображение $x \mapsto (f(x), g(x))$ непрерывно по последней теореме.
+\end{proof}
