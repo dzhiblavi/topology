@@ -10,14 +10,14 @@
 \end{remark}
 
 \begin{remark}
-	$f \colon X \to Y$ непрерыно $\Llra \forall B~ f^{-1}(\Int(B)) \subseteq 
+	$f \colon X \to Y$ непрерыно $\Llra \forall B~ f^{-1}(\Int(B)) \subseteq
 	\Int(f^{-1}(B))$.
 \end{remark}
 \begin{proof}
 	\enewline
 	\begin{itemize}
 		\item[$\Lra$] $f^{-1}(\Int(B)) = \Int(f^{-1}(\Int(B))) \subseteq \Int(f^{-1}(B))$
-		\item[$\Lla$] Пусть $U$ открыто. Тогда 
+		\item[$\Lla$] Пусть $U$ открыто. Тогда
 			$f^{-1}(U) = f^{-1}(\Int(U)) \subseteq \Int(f^{-1}(U)) \subseteq f^{-1}(U)$.
 			Поэтому $f^{-1}(U) = \Int(f^{-1}(U))$, что и означает, что $f^{-1}(U)$
 			открыто.
@@ -46,7 +46,7 @@
 
 \begin{definition}
 	Пусть $X \subset Y$, $X$ --- подпространство $Y$,
-	тогда отображение 
+	тогда отображение
 \[
 	in_{X \to Y} \colon X \to Y, ~in(x) = x
 \]
@@ -75,7 +75,7 @@
 \end{remark}
 
 \begin{theorem}(Непрерывность сужения)
-	
+
 	Если $f \colon X \to Y$ непрерывно, $Z \subseteq X$ --- подпространство $X$,
 	тогда $f\big|_Z$ непрерывно.
 \end{theorem}
@@ -110,7 +110,7 @@
 \end{definition}
 
 \begin{theorem}
-	$f \colon X \to Y$ непрерывно $\Llra$ $\forall x \in X~ f$ непрерывно в $x$. 
+	$f \colon X \to Y$ непрерывно $\Llra$ $\forall x \in X~ f$ непрерывно в $x$.
 \end{theorem}
 \begin{proof}
 	\enewline
@@ -126,7 +126,7 @@
 \end{proof}
 
 \begin{theorem}(Непрерывность в точке в терминах баз)
-	
+
 	Пусть $f \colon X \to Y$, $\Sigma_x$ --- база топологии в $x$,
 	$\Lambda_{f(x)}$ --- база топологии	в $f(x)$. Тогда
 \[
@@ -140,7 +140,7 @@
 		\item[$\Lra$] Пусть $U \in \Lambda_{f(x)}$, тогда $f^{-1}(U)$
 			открыт, то есть в нем есть элемент базы $\Sigma_x$, что нам
 			и нужно.
-		\item[$\Lla$] Пусть $U$ открыто в $Y$, тогда в $U$ есть базовая окрестность 
+		\item[$\Lla$] Пусть $U$ открыто в $Y$, тогда в $U$ есть базовая окрестность
 			$\Lambda_i \ni f(x)$. Для этого элемента по посылке существует базовая
 			окрестность $\Sigma_i \ni x \colon~ f(\Sigma_i) \subseteq \Lambda_i$.
 			Эта $\Sigma_i$ и подходит под определение непрерывности в точке.
@@ -227,13 +227,13 @@
 \end{remark}
 
 \begin{theorem}
-	Пусть $\Gamma$ --- фундаментальное покрытие $X$, $f \colon X \to Y$, 
+	Пусть $\Gamma$ --- фундаментальное покрытие $X$, $f \colon X \to Y$,
 	$\forall C \in \Gamma~ f\big|_C$ непрерывно, тогда $f$ непрерывно на $X$.
 \end{theorem}
 \begin{proof}
 	Пусть $U$ открыто в $Y$. Проверим, что $f^{-1}(U)$ открыто в $X$:
 \[
-	\forall C \in \Gamma~ f^{-1}(U) \cap C = \left(f\big|_C\right)^{-1}(U) 
+	\forall C \in \Gamma~ f^{-1}(U) \cap C = \left(f\big|_C\right)^{-1}(U)
 \]
 	Последнее множество открыто в $C$ потому, что $f\big|_C$ непрерывно.
 	Тогда по самому определению фундаментального покрытия имеем, что
@@ -265,7 +265,7 @@
 			по определению индуцированной в $C \cap U_x$ топологии. Тогда
 			$(A \cap C) \cap (C \cap U_x)$ открыто в $C \cap U_x$, где
 			$C \cap U_x$ образует конечное замкнутое покрытие $U_x$ (по построению). Это
-			покрытие фундаментально по второму пункту, поэтому по определению его 
+			покрытие фундаментально по второму пункту, поэтому по определению его
 			фундаментальности, $A \cap U_x$ открыто в $U_x$. Применяя снова
 			определение фундаментальности, только уже к покрытию $U_x$, получаем открытость
 			$A$.
@@ -289,7 +289,7 @@
 	Для этого достаточно проверить (теорема 1.5.2), что пересечение элементов базы
 	представляется в виде объединения элементов той же базы:
 \[
-	(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B')	
+	(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B')
 \]
 	Здесь объединение состоит из одного элемента.
 \end{lemma}
@@ -317,7 +317,7 @@
 \[
 	\Int(A \times B) = \bigcup_{\substack{open_{X\times Y}(C) \\ C \subseteq A \times B}}{C}
 	= \bigcup_{\substack{open_{X \times Y}(A' \times B') \\ A'\times B' \subseteq A \times B}}
-	{A' \times B'} = \bigcup_{\substack{A' \subseteq A \\ open_X(A')}}{A'} 
+	{A' \times B'} = \bigcup_{\substack{A' \subseteq A \\ open_X(A')}}{A'}
 	\times \bigcup_{\substack{B' \subseteq B \\ open_Y(B')}}{B'} = \Int(A) \times \Int(B)
 \]
 	Первый переход можно сделать, потому что любое открытое множество $C$ представляется
@@ -333,7 +333,7 @@
 \end{definition}
 
 \begin{theorem}
-	Проекция непрерывна.	
+	Проекция непрерывна.
 \end{theorem}
 \begin{proof}
 	Пусть $U$ открыто в $X$. Тогда $pr_X^{-1}(U) = U \times Y$ --- открыто в $X \times Y$
